@@ -10,10 +10,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: clone repository
-        run:
-          git clone https://github.com/Polusa1007/github_action/tree/main
-          cd github_action
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: install pytest
         run: pip install pytest
       - name: run pytest
