@@ -10,11 +10,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
+      - name: clone repository
+        run:
+          git clone https://github.com/Polusa1007/github_action.git
+          cd github_action
+      - name: install pytest
+        run: pip install pytest
+      - name: run pytest
+        run: pytest
       - name: Run a one-line script
         run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
