@@ -1,6 +1,5 @@
 # test_qwe.py
 import pytest
-from qwe import add
 
 def test_add():
     assert add(2, 3) == 5
