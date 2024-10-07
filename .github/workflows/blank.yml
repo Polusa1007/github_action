@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: clone repository
         run:
-          git clone https://github.com/Polusa1007/github_action.git
+          git clone https://github.com/Polusa1007/github_action/tree/main
           cd github_action
       - name: install pytest
         run: pip install pytest
