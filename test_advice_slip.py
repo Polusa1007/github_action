@@ -1,19 +1,19 @@
 # test_advice_slip.py
 
 import pytest
-from login_setup import LoginSetUp
+import requests
 
-@pytest.fixture
-def login_setup():
-    """Fixture 初始化 LoginSetUp"""
-    return LoginSetUp()
-
-def test_get_advice(login_setup):
+def test_get_advice():
     """測試從 Advice Slip API 獲取建議"""
-    response = login_setup.get_advice()
-    
-    # 檢查回應是否有正確的 'slip' 和 'advice' 字段
-    assert 'slip' in response
-    assert 'advice' in response['slip']
-    
-    print(f"Received advice: {response['slip']['advice']}")
+    base_url = "https://api.adviceslip.com/advice"
+    response = requests.get(base_url)
+
+    # 檢查 HTTP 狀態碼是否為 200
+    assert response.status_code == 200, f"Failed with status code {response.status_code}"
+
+    # 檢查回應內容
+    data = response.json()
+    assert 'slip' in data, "No 'slip' key in response"
+    assert 'advice' in data['slip'], "No 'advice' key in 'slip'"
+
+    print(f"Received advice: {data['slip']['advice']}")
