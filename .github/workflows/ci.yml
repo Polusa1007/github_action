@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 步驟 1: 檢出你的代碼
+    # 步驟 1: 檢出代碼
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -16,9 +16,9 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'  # 你可以選擇任意支持的 Python 版本
+        python-version: '3.9'
 
-    # 步驟 3: 快取 pip 安裝的依賴
+    # 步驟 3: 快取 pip 依賴
     - name: Cache pip dependencies
       uses: actions/cache@v3
       with:
@@ -33,7 +33,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 步驟 5: 運行測試
-    - name: Run API tests
+    # 步驟 5: 執行測試
+    - name: Run tests
       run: |
         pytest
