@@ -13,3 +13,5 @@ def test_get_advice():
     assert 'advice' in data['slip'], "No 'advice' key in 'slip'"
 
     print(f"Received advice: {data['slip']['advice']}")
+
+    assert 'nonexistent_key' in data['slip'], "No 'nonexistent_key' in 'slip'"
