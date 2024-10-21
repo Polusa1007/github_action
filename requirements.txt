@@ -3,3 +3,4 @@ uvicorn
 pytest
 pytest-mock
 requests
+httpx
