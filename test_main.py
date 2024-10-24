@@ -9,13 +9,12 @@ client = TestClient(app)
 def mock_db():
     return MagicMock()
 
-# 測試創建用戶 API
+# 創建用戶 API
 def test_create_user(mock_db, mocker):
     mock_user = MagicMock()
     mock_user.name = "Test User"
     mock_user.email = "test@example.com"
     
-    # 這裡需要確保模擬的對象能夠轉換為 JSON 格式
     mocker.patch('main.create_user_in_db', return_value={"name": "Test User", "email": "test@example.com"})
 
     response = client.post("/users", json={"name": "Test User", "email": "test@example.com"})
@@ -23,13 +22,12 @@ def test_create_user(mock_db, mocker):
     assert response.status_code == 200
     assert response.json() == {"name": "Test User", "email": "test@example.com"}
 
-# 測試查詢用戶 API
+# 查詢用戶 API
 def test_get_user(mock_db, mocker):
     mock_user = MagicMock()
     mock_user.name = "Test User"
     mock_user.email = "test@example.com"
-    
-    # 確保 mock 對象能夠返回正確的值
+
     mocker.patch('main.get_user_from_db', return_value={"name": "Test User", "email": "test@example.com"})
 
     response = client.get("/users/test@example.com")
