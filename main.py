@@ -8,9 +8,9 @@ class User(BaseModel):
     name: str
     email: str
 
-# 假設的資料庫操作
+
 def get_db():
-    pass  # 這裡會是實際的資料庫 session
+    pass  
 
 def create_user_in_db(db: Session, user: User):
     db.add(user)
