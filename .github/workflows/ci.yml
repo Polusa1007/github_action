@@ -8,17 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 步驟 1: 檢出代碼
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 步驟 2: 設定 Python 環境
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
 
-    # 步驟 3: 快取 pip 依賴
     - name: Cache pip dependencies
       uses: actions/cache@v3
       with:
@@ -27,13 +24,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pip-
 
-    # 步驟 4: 安裝依賴
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 步驟 5: 執行測試
     - name: Run tests
       run: |
         pytest
