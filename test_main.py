@@ -9,7 +9,6 @@ client = TestClient(app)
 def mock_db():
     return MagicMock()
 
-# 創建用戶 API
 def test_create_user(mock_db, mocker):
     mock_user = MagicMock()
     mock_user.name = "Test User"
@@ -22,7 +21,6 @@ def test_create_user(mock_db, mocker):
     assert response.status_code == 200
     assert response.json() == {"name": "Test User", "email": "test@example.com"}
 
-# 查詢用戶 API
 def test_get_user(mock_db, mocker):
     mock_user = MagicMock()
     mock_user.name = "Test User"
